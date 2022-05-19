@@ -3,13 +3,15 @@ import Head from "next/head";
 import Landing from "./components/Landing";
 import gsap from "gsap";
 import Intro from "./components/Intro";
+import About from "./components/About";
 
 let tl = gsap.timeline();
 
 const introAnimation = (completeAnimation) => {
-  tl.to(".line", 1.6, {
+  tl.to(".line", {
     height: 0,
     ease: "expo.inOut",
+    duration: 1,
     stagger: 0.4,
     onComplete: completeAnimation,
   });
@@ -34,7 +36,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="overflow-hidden bg-awar">
-        {introComplete === false ? <Intro /> : <Landing />}
+        {introComplete === false ? (
+          <Intro />
+        ) : (
+          <>
+            <Landing />
+            <About />
+          </>
+        )}
       </div>
     </>
   );
