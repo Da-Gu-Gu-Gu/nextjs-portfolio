@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Nav from "./Nav";
 import Lottie from "lottie-react";
 import * as animationData from "./profile.json";
@@ -7,56 +7,94 @@ import { CSSRulePlugin } from "gsap/dist/CSSRulePlugin";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(CSSRulePlugin);
 
 let tl = gsap.timeline();
 
-const Landing = () => {
-  const textRef = useRef(null);
-
-  useEffect(() => {
-    let imageReveal = CSSRulePlugin.getRule(".profile-container::after");
-
-    tl.to(".line-vertical", {
-      height: "50px",
+const landAnime = (image, complete) => {
+  tl.to(".line-vertical", {
+    height: "50px",
+    ease: "expo.inOut",
+    duration: 0.3,
+    stagger: 0.4,
+    onComplete: complete,
+  })
+    .to(".line-horizontal", {
+      width: "100%",
       ease: "expo.inOut",
-      duration: 0.5,
+      duration: 0.3,
       stagger: 0.4,
+      onComplete: complete,
     })
-      .to(".line-horizontal", {
-        width: "100%",
+    .fromTo(
+      ".logo",
+      {
+        opacity: 0,
+        rotate: -90,
+      },
+      {
+        opacity: 1,
+        rotate: 0,
+        ease: "expo.inOut",
+        duration: 0.3,
+        stagger: 0.4,
+        onComplete: complete,
+      }
+    )
+    .to(".profile-container", {
+      height: "208px",
+      ease: "power2.easeInOut",
+      duration: 0.3,
+      onComplete: complete,
+    })
+    .to(image, {
+      width: "0%",
+      ease: "power2.easeInOut",
+      duration: 0.8,
+      onComplete: complete,
+    })
+    .fromTo(
+      ".profile",
+      { scale: 1.5 },
+      {
+        scale: 1,
+        ease: "power2.easeOut",
+        duration: 0.8,
+        onComplete: complete,
+      }
+    )
+    .to(".hi-wrap", {
+      opacity: 1,
+      onComplete: complete,
+    })
+    .fromTo(
+      ".hi",
+
+      {
+        yPercent: 150,
+      },
+      {
+        yPercent: 0,
         ease: "expo.inOut",
         duration: 0.5,
-        stagger: 0.4,
-      })
-      .to(".profile-container", {
-        height: "208px",
-        ease: "power2.easeInOut",
-        duration: 1,
-      })
-      .to(imageReveal, {
-        width: "0%",
-        ease: "power2.easeInOut",
-        duration: 1,
-      })
-      .fromTo(
-        ".profile",
-        { scale: 1.5 },
-        {
-          scale: 1,
-          ease: "power2.easeOut",
-          duration: 1,
-          delay: -0.9,
-        }
-      )
+        stagger: 0.3,
+        onComplete: complete,
+      }
+    );
+};
 
-      .to(".hi", {
-        y: 0,
-        ease: "power4.out",
-        stagger: 0.3,
-        duration: 0.5,
-        delay: 0.5,
-        stagger: 0.3,
-      });
+const Landing = () => {
+  const [complete, setcomplete] = useState(false);
+  const imageReveal = CSSRulePlugin.getRule(".profile-container::after");
+
+  const completeHandler = () => {
+    setcomplete(true);
+  };
+  useEffect(() => {
+    console.log(complete);
+    complete === false ? landAnime(imageReveal, completeHandler) : alert("aaa");
+
+    // setcomplete(false);
   }, []);
 
   return (
@@ -73,18 +111,30 @@ const Landing = () => {
           />
         </div>
         <div className="self-center sm:w-96  w-80 mt-8 flex flex-col">
-          <h2
-            onClick={() => alert("arr")}
-            className="bg-white hi p-1  translate-y-[110%] px-2 rounded-lg inline self-start "
-          >
-            👋 Hi
-          </h2>
-          <h2 className="bg-white hi   p-1 px-2 translate-y-[110%] rounded-lg mt-2 inline self-start ">
-            I'm Da Gu Gu Gu
-          </h2>
-          <h2 className="bg-white hi   p-1 px-2 translate-y-[110%] rounded-lg mt-2 inline self-start ">
-            Developer
-          </h2>
+          <div className=" p-1 hi-wrap opacity-0 overflow-hidden rounded-lg inline-flex self-start">
+            <h2
+              className="bg-white hi px-1 rounded-lg"
+              onClick={() => alert("arr")}
+            >
+              👋 Hi
+            </h2>
+          </div>
+          <div className=" p-1 hi-wrap opacity-0 overflow-hidden rounded-lg inline-flex self-start">
+            <h2
+              className="bg-white hi px-1 rounded-lg"
+              onClick={() => alert("arr")}
+            >
+              I'm Da Gu Gu Gu
+            </h2>
+          </div>
+          <div className=" p-1 hi-wrap opacity-0 overflow-hidden rounded-lg inline-flex self-start">
+            <h2
+              className="bg-white hi px-1 rounded-lg"
+              onClick={() => alert("arr")}
+            >
+              Developer
+            </h2>
+          </div>
         </div>
       </div>
     </div>

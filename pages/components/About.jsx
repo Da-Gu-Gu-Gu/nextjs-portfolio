@@ -1,17 +1,124 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const aboutwrapRef = useRef(null);
+  const emojiRef = useRef(null);
+  const aboutRef = useRef(null);
+  const abouttitleRef = useRef(null);
+
+  useEffect(() => {
+    gsap.fromTo(
+      aboutwrapRef.current,
+      {
+        height: 0,
+      },
+      {
+        height: "100%",
+
+        ease: "power2.easeInOut",
+        duration: 1,
+        scrollTrigger: {
+          trigger: aboutwrapRef.current,
+          scrub: true,
+          start: "bottom bottom",
+          end: "center center+=100",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      emojiRef.current,
+      {
+        opacity: 0,
+        y: -150,
+      },
+      {
+        opacity: 1,
+        y: 0,
+
+        ease: "expo.inOut",
+        delay: 0.5,
+        scrollTrigger: {
+          scrub: true,
+          trigger: aboutwrapRef.current,
+
+          end: "center center+=100",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+
+    gsap.fromTo(
+      abouttitleRef.current,
+      {
+        opacity: 0,
+        x: -150,
+      },
+      {
+        opacity: 1,
+        x: 0,
+
+        ease: "expo.inOut",
+        delay: 0.8,
+        scrollTrigger: {
+          scrub: true,
+          trigger: aboutwrapRef.current,
+          end: "center center+=100",
+          // start: "top center+=100",
+          toggleActions: "play none none reverse",
+          // markers: true,
+        },
+      }
+    );
+
+    gsap.fromTo(
+      aboutRef.current,
+      {
+        yPercent: 2000,
+      },
+      {
+        yPercent: 0,
+
+        ease: "expo.inOut",
+        delay: 1,
+        scrollTrigger: {
+          scrub: true,
+          trigger: aboutwrapRef.current,
+          end: "center center+=100",
+          // start: "top center+=100",
+          toggleActions: "play none none reverse",
+          // markers: true,
+        },
+      }
+    );
+  }, []);
+
   return (
-    <div className="h-screen w-screen py-24 flex justify-center bg-amel text-white text-3xl">
-      <div className="lg:w-1/2 md:w-3/4 relative w-4/5 p-8 bg-kayan">
-        <h1>Firstly,</h1>
-        <p className="my-5  w-auto text-left text-[20px] md:text-2xl lg:text-3xl">
-          I'm very <span className="bg-ani p-1">handsome developer</span>, from
-          Yangon. Studied at University of Computer Studies Yangon. I'm the boy
-          fall in love with{" "}
-          <span className="bg-awar text-amel p-1">Javascript</span>.
+    <div className=" w-screen ABOUT h:max sm:h-screen xl:h-screen md:h-max lg:h-max  py-24 flex justify-center bg-amel items-center text-white text-3xl">
+      <div
+        ref={aboutwrapRef}
+        className="lg:w-1/2 rounded-md md:w-3/4 relative h-auto w-4/5 py-8 px-5 overflow-hidden  bg-kayan"
+      >
+        <span ref={emojiRef} className="text-right block ">
+          🔥
+        </span>
+        <h1 ref={abouttitleRef}>Firstly,</h1>
+        <p
+          ref={aboutRef}
+          className="my-5  w-auto text-justify break-all  text-[18px] md:text-2xl lg:text-3xl"
+        >
+          I'm very <span className="p-1 bg-ani">handsome developer</span>, from
+          Yangon and also studied at University of Computer Studies Yangon. I'm
+          the boy fall in love with{" "}
+          <span className="bg-awar text-amel p-1">Javascript</span>. Have been
+          learning programming for almost a year and still learning.🚀
         </p>
-        <p className="absolute bottom-5">Love To Design</p>
+        {/* <span className=" text-lg mt-3">Love To</span> */}
       </div>
     </div>
   );

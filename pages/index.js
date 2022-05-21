@@ -4,6 +4,8 @@ import Landing from "./components/Landing";
 import gsap from "gsap";
 import Intro from "./components/Intro";
 import About from "./components/About";
+import Skills from "./components/Skills";
+import Project from "./components/Project";
 
 let tl = gsap.timeline();
 
@@ -42,6 +44,8 @@ export default function Home() {
           <>
             <Landing />
             <About />
+            <Skills />
+            <Project />
           </>
         )}
       </div>

@@ -10,12 +10,6 @@ const open = () => {
   tl.to(".menu-wrap", {
     display: "block",
   })
-    .to(".nav", {
-      background: "#F75656",
-
-      ease: "expo.inOut",
-      duration: 0.2,
-    })
     .fromTo(
       ".menu-link-wrap",
       {
@@ -73,10 +67,12 @@ const open = () => {
     .fromTo(
       ".menu-link",
       {
-        opacity: 0,
+        // opacity: 0,
+        xPercent: -10000,
       },
       {
-        opacity: 1,
+        // opacity: 1,
+        xPercent: 0,
         duration: 0.2,
         ease: "power3.out",
         stagger: 0.1,
@@ -100,7 +96,6 @@ const open = () => {
         duration: 0.5,
       }
     );
-  console.log(".menu-link"._gsTransform);
 };
 
 const close = () => {
@@ -118,10 +113,12 @@ const close = () => {
     .fromTo(
       ".menu-link",
       {
-        opacity: 1,
+        // opacity: 1,
+        xPercent: 0,
       },
       {
-        opacity: 0,
+        // opacity: 0,
+        xPercent: -10000,
         duration: 0.2,
         ease: "power3.out",
         stagger: 0.1,
@@ -153,11 +150,7 @@ const close = () => {
         },
       }
     )
-    .to(".nav", {
-      background: "transparent",
-      ease: "expo.inOut",
-      duration: 0.2,
-    })
+
     .to(".menu-wrap", {
       display: "none",
     });
@@ -178,11 +171,11 @@ const Nav = () => {
   }, [menuOpen]);
 
   return (
-    <div className=" fixed top-0  left-0 z-10 flex flex-col">
+    <div className=" fixed top-0  left-0 z-10 flex bg-transparent flex-col">
       <div className="line-horizontal w-0 h-0.5 bg-black "></div>
 
-      <div className=" w-screen h-[50px] nav  bg-transparent  flex  item-center justify-center">
-        <div className="lg:w-1/2 md:w-3/4 w-screen   flex items-center  bg-transparent">
+      <div className=" w-screen h-[50px] nav  bg-awar  flex  item-center justify-center">
+        <div className="lg:w-1/2 md:w-3/4 w-screen   flex items-center  ">
           <div className="w-0.5  line-vertical bg-black"></div>
           <div className="logo font-bold   inline-block h-[50px] leading-[50px] px-5 ">
             D
@@ -194,7 +187,7 @@ const Nav = () => {
           <div className="w-0.5  line-vertical bg-black"></div>
           <div
             onClick={() => setMenuOpen(!menuOpen)}
-            className="logo font-bold  text-center    h-[50px] flex flex-col items-center justify-center px-5 "
+            className="logo font-bold  text-center cursor-pointer   h-[50px] flex flex-col items-center justify-center px-5 "
           >
             <div className="line1 w-6 h-[3px] mb-1 bg-black"></div>
             <div className="line1 w-6 h-[3px] mb-1 bg-black"></div>
@@ -215,7 +208,7 @@ const Nav = () => {
             <div className="h-full menu-link-wrap grow bg-kayan text-white">
               <div className="h-1/5 flex flex-col">
                 <div className="h-full flex ">
-                  <div className="pl-[25px] pr-[26px] relative font-bold h-full  align-middle">
+                  <div className="pl-[25px] pr-[26px] overflow-hidden relative font-bold h-full  align-middle">
                     <span className=" absolute  menu-link top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                       1.
                     </span>
