@@ -301,15 +301,15 @@ const Nav = () => {
 
               <div className="h-1/5 bg-white text-kayan social ">
                 <div className="mx-auto w-4/5  py-3 menu-link flex justify-around">
-                  {/* <Link href={"https://www.linkedin.com/in/dagugu/"}> */}
-                  <BsLinkedin className="align-text-center text-[40px] cursor-pointer" />
-                  {/* </Link> */}
-                  {/* <Link href={"https://github.com/Da-Gu-Gu-Gu"}> */}
-                  <BsGithub className="align-text-center text-[40px] cursor-pointer" />
-                  {/* </Link> */}
-                  {/* <Link href="mailto:daguguguu@gmail.com"> */}
-                  <HiOutlineMail className="align-text-center text-[43px] cursor-pointer" />
-                  {/* </Link> */}
+                  <a href={"https://www.linkedin.com/in/dagugu/"}>
+                    <BsLinkedin className="align-text-center text-[40px] cursor-pointer" />
+                  </a>
+                  <a href={"https://github.com/Da-Gu-Gu-Gu"}>
+                    <BsGithub className="align-text-center text-[40px] cursor-pointer" />
+                  </a>
+                  <a href="mailto:daguguguu@gmail.com">
+                    <HiOutlineMail className="align-text-center text-[43px] cursor-pointer" />
+                  </a>
                 </div>
               </div>
             </div>

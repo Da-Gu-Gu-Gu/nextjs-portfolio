@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Typical from "react-typical";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -96,6 +97,28 @@ const About = () => {
         },
       }
     );
+    gsap.fromTo(
+      ".typewritter",
+      {
+        color: "#501683",
+        // display: "none",
+      },
+      {
+        color: "white",
+        // display: "block",
+
+        ease: "expo.inOut",
+        delay: 1,
+        scrollTrigger: {
+          scrub: true,
+          trigger: aboutwrapRef.current,
+          end: "center top",
+          // start: "top center+=100",
+          toggleActions: "play none none reverse",
+          // markers: true,
+        },
+      }
+    );
   }, []);
 
   return (
@@ -118,7 +141,13 @@ const About = () => {
           <span className="bg-awar text-amel p-1">Javascript</span>. Have been
           learning programming for almost a year and still learning.🚀
         </p>
-        {/* <span className=" text-lg mt-3">Love To</span> */}
+        <span className=" text-lg mt-3  flex text-kayan typewritter">
+          Love To &nbsp;
+          <Typical
+            steps={["Design", 2000, "Code", 2000, "Animate It ☁️", 2000]}
+            loop={Infinity}
+          />
+        </span>
       </div>
     </div>
   );
