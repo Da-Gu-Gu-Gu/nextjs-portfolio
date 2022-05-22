@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { MdArrowForwardIos } from "react-icons/md";
+// import Link from "next/link";
 
 const tl = gsap.timeline();
 
@@ -300,9 +301,15 @@ const Nav = () => {
 
               <div className="h-1/5 bg-white text-kayan social ">
                 <div className="mx-auto w-4/5  py-3 menu-link flex justify-around">
-                  <BsLinkedin className="align-text-center text-[40px]" />
-                  <BsGithub className="align-text-center text-[40px]" />
-                  <HiOutlineMail className="align-text-center text-[43px]" />
+                  {/* <Link href={"https://www.linkedin.com/in/dagugu/"}> */}
+                  <BsLinkedin className="align-text-center text-[40px] cursor-pointer" />
+                  {/* </Link> */}
+                  {/* <Link href={"https://github.com/Da-Gu-Gu-Gu"}> */}
+                  <BsGithub className="align-text-center text-[40px] cursor-pointer" />
+                  {/* </Link> */}
+                  {/* <Link href="mailto:daguguguu@gmail.com"> */}
+                  <HiOutlineMail className="align-text-center text-[43px] cursor-pointer" />
+                  {/* </Link> */}
                 </div>
               </div>
             </div>

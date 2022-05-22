@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { SiExpress, SiMongodb, SiReact, SiNodedotjs } from "react-icons/si";
@@ -14,7 +14,7 @@ const Skills = () => {
       },
       {
         color: "#F75656",
-        ease: "power2.easeIn",
+        ease: "power2.in",
         stagger: 1,
         scrollTrigger: {
           scrub: true,
@@ -32,8 +32,9 @@ const Skills = () => {
       },
       {
         color: "#191919",
-        ease: "power2.easeIn",
+        ease: "power2.in",
         stagger: 1,
+        duration: 1,
         scrollTrigger: {
           scrub: true,
           trigger: ".programming",
@@ -45,25 +46,20 @@ const Skills = () => {
       }
     );
 
-    gsap.fromTo(
-      ".skill-line-horizontal",
-      {
-        height: 0,
+    gsap.to(".skill-line-horizontal", {
+      width: "100%",
+      ease: "expo.inOut",
+      stagger: 1,
+      duration: 1,
+      scrollTrigger: {
+        scrub: true,
+        trigger: ".skill-line-horizontal",
+        start: "center bottom-=200",
+        end: "center center",
+        toggleActions: "play none none reverse",
+        // markers: true,
       },
-      {
-        height: "100%",
-        ease: "power4.easeInOut",
-        stagger: 1,
-        scrollTrigger: {
-          scrub: true,
-          trigger: ".skill-line-horizontal",
-          start: "center bottom-=200",
-          end: "center center",
-          toggleActions: "play none none reverse",
-          // markers: true,
-        },
-      }
-    );
+    });
 
     gsap.fromTo(
       ".skill-icon",
@@ -72,7 +68,7 @@ const Skills = () => {
       },
       {
         color: "#191919",
-        ease: "power2.easeIn",
+        ease: "power2.in",
         stagger: 1,
         scrollTrigger: {
           scrub: true,
@@ -97,8 +93,8 @@ const Skills = () => {
         <h1 className="skill">👀</h1>
       </div>
       <div className="lg:w-1/2 md:w-3/4 mt-10  h-[400px] w-4/5 py-8 px-5  overflow-hidden  bg-awar">
-        <div className="h-1/4 border-amel  flex border-2 border-l-0 border-r-0 items-center justify-center">
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
+        <div className="w-0 h-0.5  skill-line-horizontal bg-amel"></div>
+        <div className="h-1/4  flex  items-center justify-center">
           <p className=" bg-ani block text-center px-5 py-1   ">
             <SiMongodb className="skill-icon  " />
           </p>
@@ -108,10 +104,10 @@ const Skills = () => {
               MONGO
             </p>
           </div>
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
         </div>
-        <div className="h-1/4 border-amel border-t-0   flex border-2  border-l-0 border-r-0 items-center justify-center">
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
+
+        <div className="w-0 h-0.5  skill-line-horizontal bg-amel"></div>
+        <div className="h-1/4  flex  items-center justify-center">
           <p className=" bg-ani  block  text-center px-5 py-1 ">
             <SiExpress className="skill-icon  " />
           </p>
@@ -120,10 +116,10 @@ const Skills = () => {
               EXPRESS
             </p>
           </div>
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
         </div>
-        <div className="h-1/4 border-amel border-t-0   flex border-2  border-l-0 border-r-0 items-center justify-center">
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
+
+        <div className="w-0 h-0.5  skill-line-horizontal bg-amel"></div>
+        <div className="h-1/4  flex  items-center justify-center">
           <p className=" bg-ani  block  text-center px-5 py-1  ">
             <SiReact className="skill-icon  " />
           </p>
@@ -132,11 +128,10 @@ const Skills = () => {
               REACT
             </p>
           </div>
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
         </div>
 
-        <div className="h-1/4 border-amel border-t-0   flex border-2  border-l-0 border-r-0 items-center justify-center">
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
+        <div className="w-0 h-0.5  skill-line-horizontal bg-amel"></div>
+        <div className="h-1/4  flex  items-center justify-center">
           <p className=" bg-ani block  text-center px-5 py-1  ">
             <SiNodedotjs className="skill-icon  " />
           </p>
@@ -145,8 +140,8 @@ const Skills = () => {
               NODE
             </p>
           </div>
-          <div className="w-0.5 h-full skill-line-horizontal bg-amel"></div>
         </div>
+        <div className="w-0 h-0.5  skill-line-horizontal bg-amel"></div>
       </div>
     </div>
   );

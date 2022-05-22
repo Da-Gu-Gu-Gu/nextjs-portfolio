@@ -6,6 +6,7 @@ import Intro from "./components/Intro";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Project from "./components/Project";
+import Footer from "./components/Footer";
 
 let tl = gsap.timeline();
 
@@ -46,6 +47,7 @@ export default function Home() {
             <About />
             <Skills />
             <Project />
+            <Footer />
           </>
         )}
       </div>
