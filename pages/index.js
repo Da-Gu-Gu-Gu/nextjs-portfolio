@@ -35,7 +35,11 @@ export default function Home() {
     <>
       <Head>
         <title>Da Gu Gu Gu</title>
-        <meta name="description" content="Hello, I'm Web Developer 💻" />
+        <meta
+          name="description"
+          content="Hello, I'm Da Gu Gu Gu , and studied at University of Computer Studies Yangon. I'm the
+          boy fall in love with Javascript 🌻"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="overflow-hidden bg-awar">

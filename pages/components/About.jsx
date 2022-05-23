@@ -122,7 +122,10 @@ const About = () => {
   }, []);
 
   return (
-    <div className=" w-screen ABOUT h:max sm:h-screen xl:h-screen md:h-max lg:h-max  py-24 flex justify-center bg-amel items-center text-white text-3xl">
+    <div
+      id="about"
+      className=" w-screen ABOUT h:max sm:h-screen xl:h-screen md:h-max lg:h-max  py-24 flex justify-center bg-amel items-center text-white text-3xl"
+    >
       <div
         ref={aboutwrapRef}
         className="lg:w-1/2 rounded-md md:w-3/4 relative h-auto w-4/5 py-8 px-5 overflow-hidden  bg-kayan"
@@ -136,15 +139,15 @@ const About = () => {
           className="my-5  w-auto text-justify break-all  text-[18px] md:text-2xl lg:text-3xl"
         >
           I'm very <span className="p-1 bg-ani">handsome developer</span>, from
-          Yangon and also studied at University of Computer Studies Yangon. I'm
-          the boy fall in love with{" "}
+          Yangon and studied at University of Computer Studies Yangon. I'm the
+          boy fall in love with{" "}
           <span className="bg-awar text-amel p-1">Javascript</span>. Have been
           learning programming for almost a year and still learning.🚀
         </p>
         <span className=" text-lg mt-3  flex text-kayan typewritter">
           Love To &nbsp;
           <Typical
-            steps={["Design", 2000, "Code", 2000, "Animate It ☁️", 2000]}
+            steps={["Design", 2500, "Code", 2500, "Animate It ☁️", 2500]}
             loop={Infinity}
           />
         </span>

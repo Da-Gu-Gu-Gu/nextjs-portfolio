@@ -83,7 +83,10 @@ const Skills = () => {
   }, []);
 
   return (
-    <div className="w-screen h-max py-24 flex items-center flex-col justify-center  bg-ani text-3xl">
+    <div
+      id="skill"
+      className="w-screen h-max py-24 flex items-center flex-col justify-center  bg-ani text-3xl"
+    >
       <div className="flex rounded-md bg-amel p-2 font-bold text-4xl text-ani  text-center">
         <h1 className="skill">S</h1>
         <h1 className="skill">K</h1>

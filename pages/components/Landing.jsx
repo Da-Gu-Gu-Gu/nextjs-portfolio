@@ -4,101 +4,90 @@ import Lottie from "lottie-react";
 import * as animationData from "./profile.json";
 import gsap from "gsap";
 import { CSSRulePlugin } from "gsap/dist/CSSRulePlugin";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(CSSRulePlugin);
 
-let tl = gsap.timeline();
-
-const landAnime = (image, complete) => {
-  tl.to(".line-vertical", {
+const landAnime = (image) => {
+  gsap.to(".line-vertical", {
     height: "50px",
     ease: "expo.inOut",
     duration: 0.3,
     stagger: 0.4,
-    onComplete: complete,
-  })
-    .to(".line-horizontal", {
-      width: "100%",
+  });
+  gsap.to(".line-horizontal", {
+    width: "100%",
+    ease: "expo.inOut",
+    duration: 0.6,
+    stagger: 0.4,
+    delay: 0.3,
+  });
+
+  gsap.fromTo(
+    ".logo",
+    {
+      opacity: 0,
+      rotate: -90,
+    },
+    {
+      opacity: 1,
+      rotate: 0,
       ease: "expo.inOut",
       duration: 0.3,
       stagger: 0.4,
-      onComplete: complete,
-    })
-    .fromTo(
-      ".logo",
-      {
-        opacity: 0,
-        rotate: -90,
-      },
-      {
-        opacity: 1,
-        rotate: 0,
-        ease: "expo.inOut",
-        duration: 0.3,
-        stagger: 0.4,
-        onComplete: complete,
-      }
-    )
-    .to(".profile-container", {
-      height: "208px",
-      ease: "power2.easeInOut",
-      duration: 0.3,
-      onComplete: complete,
-    })
-    .to(image, {
-      width: "0%",
-      ease: "power2.easeInOut",
-      duration: 0.8,
-      onComplete: complete,
-    })
-    .fromTo(
-      ".profile",
-      { scale: 1.5 },
-      {
-        scale: 1,
-        ease: "power2.easeOut",
-        duration: 0.8,
-        onComplete: complete,
-      }
-    )
-    .to(".hi-wrap", {
-      opacity: 1,
-      onComplete: complete,
-    })
-    .fromTo(
-      ".hi",
+      delay: 0.6,
+    }
+  );
+  gsap.to(".profile-container", {
+    height: "208px",
+    ease: "power2.easeInOut",
+    duration: 0.3,
+    delay: 0.9,
+  });
+  gsap.to(image, {
+    width: "0%",
+    ease: "power2.easeInOut",
+    duration: 0.8,
+    delay: 1.2,
+  });
 
-      {
-        yPercent: 150,
-      },
-      {
-        yPercent: 0,
-        ease: "expo.inOut",
-        duration: 0.5,
-        stagger: 0.3,
-        onComplete: complete,
-      }
-    );
+  gsap.fromTo(
+    ".profile",
+    { scale: 1.5 },
+    {
+      scale: 1,
+      ease: "power2.easeOut",
+      duration: 0.8,
+      delay: 2,
+    }
+  );
+  gsap.to(".hi-wrap", {
+    opacity: 1,
+  });
+  gsap.fromTo(
+    ".hi",
+
+    {
+      yPercent: 150,
+    },
+    {
+      yPercent: 0,
+      ease: "expo.inOut",
+      duration: 0.5,
+      stagger: 0.3,
+      delay: 2.3,
+    }
+  );
 };
 
 const Landing = () => {
-  const [complete, setcomplete] = useState(false);
   const imageReveal = CSSRulePlugin.getRule(".profile-container::after");
 
-  const completeHandler = () => {
-    setcomplete(true);
-  };
   useEffect(() => {
-    console.log(complete);
-    complete === false ? landAnime(imageReveal, completeHandler) : alert("aaa");
-
-    // setcomplete(false);
+    landAnime(imageReveal);
   }, []);
 
   return (
-    <div className="overflow-hidden bg-awar">
+    <div id="landing" className="overflow-hidden  bg-awar">
       <Nav />
       {/* h-52  */}
       <div className="text-3xl  w-screen h-screen flex flex-col   justify-center">

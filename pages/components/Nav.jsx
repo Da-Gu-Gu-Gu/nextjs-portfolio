@@ -8,9 +8,44 @@ import { MdArrowForwardIos } from "react-icons/md";
 const tl = gsap.timeline();
 
 const open = () => {
-  tl.to(".menu-wrap", {
-    display: "block",
-  })
+  tl.fromTo(
+    ".line1",
+    {
+      rotate: 0,
+    },
+    {
+      css: {
+        rotate: "-45deg",
+        translateX: "5px",
+        translateY: "5px",
+      },
+    }
+  )
+    .fromTo(
+      ".line2",
+      {
+        opacity: 1,
+      },
+      {
+        opacity: 0,
+      }
+    )
+    .fromTo(
+      ".line3",
+      {
+        rotate: 0,
+      },
+      {
+        css: {
+          rotate: "45deg",
+          translateX: "4px",
+          translateY: "-9px",
+        },
+      }
+    )
+    .to(".menu-wrap", {
+      display: "block",
+    })
     .fromTo(
       ".menu-link-wrap",
       {
@@ -79,13 +114,6 @@ const open = () => {
         stagger: 0.1,
       }
     )
-    // .from(".menu-link", {
-    //   y: 150,
-    //   autoAlpha: 0,
-    //   duration: 0.2,
-    //   ease: "power3.out",
-    //   stagger: 0.1,
-    // })
     .fromTo(
       ".social",
       {
@@ -154,7 +182,56 @@ const close = () => {
 
     .to(".menu-wrap", {
       display: "none",
-    });
+    })
+    .fromTo(
+      ".line1",
+      {
+        css: {
+          rotate: "-45deg",
+          translateX: "5px",
+          translateY: "5px",
+        },
+      },
+      {
+        duration: 0.2,
+        alpha: 0,
+        css: {
+          rotate: "0deg",
+          translateX: "0px",
+          translateY: "0px",
+        },
+      }
+    )
+    .fromTo(
+      ".line2",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+        duration: 0.2,
+        alpha: 0,
+      }
+    )
+    .fromTo(
+      ".line3",
+      {
+        css: {
+          rotate: "45deg",
+          translateX: "4px",
+          translateY: "-9px",
+        },
+        duration: 0.2,
+        alpha: 0,
+      },
+      {
+        css: {
+          rotate: "0deg",
+          translateX: "0px",
+          translateY: "0px",
+        },
+      }
+    );
 };
 
 const Nav = () => {
@@ -178,21 +255,21 @@ const Nav = () => {
       <div className=" w-screen h-[50px] nav  bg-awar  flex  item-center justify-center">
         <div className="lg:w-1/2 md:w-3/4 w-screen   flex items-center  ">
           <div className="w-0.5  line-vertical bg-black"></div>
-          <div className="logo font-bold   inline-block h-[50px] leading-[50px] px-5 ">
+          <div className="logo font-bold opacity-0   inline-block h-[50px] leading-[50px] px-5 ">
             D
           </div>
           <div className="w-0.5  line-vertical bg-black"></div>
-          <div className="logo font-bold grow text-center   inline-block h-[50px] leading-[50px] px-5 ">
+          <div className="logo font-bold opacity-0 grow text-center   inline-block h-[50px] leading-[50px] px-5 ">
             Welcome
           </div>
           <div className="w-0.5  line-vertical bg-black"></div>
           <div
             onClick={() => setMenuOpen(!menuOpen)}
-            className="logo font-bold  text-center cursor-pointer   h-[50px] flex flex-col items-center justify-center px-5 "
+            className="logo font-bold opacity-0 text-center cursor-pointer   h-[50px] flex flex-col items-center justify-center px-5 "
           >
             <div className="line1 w-6 h-[3px] mb-1 bg-black"></div>
-            <div className="line1 w-6 h-[3px] mb-1 bg-black"></div>
-            <div className="line1 w-6 h-[3px] bg-black"></div>
+            <div className="line2 w-6 h-[3px] mb-1 bg-black"></div>
+            <div className="line3 w-6 h-[3px] bg-black"></div>
           </div>
           <div className="w-0.5 line-vertical bg-black"></div>
         </div>
@@ -216,9 +293,13 @@ const Nav = () => {
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="grow relative">
-                    <p className="text-3xl menu-link font-bold tracking-widest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <a
+                      href="#landing"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="text-3xl hover:tracking-tighter  menu-link font-extrabold tracking-widest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    >
                       HOME
-                    </p>
+                    </a>
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="pl-[32px] pr-[32px] relative font-bold h-full  align-middle">
@@ -239,9 +320,13 @@ const Nav = () => {
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="grow relative">
-                    <p className="text-3xl menu-link font-bold tracking-widest  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <a
+                      href="#about"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="text-3xl menu-link hover:tracking-tighter font-extrabold tracking-widest  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    >
                       ABOUT
-                    </p>
+                    </a>
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="pl-[32px] pr-[32px] relative font-bold h-full  align-middle">
@@ -262,9 +347,13 @@ const Nav = () => {
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="grow relative">
-                    <p className="text-3xl menu-link font-bold tracking-widest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <a
+                      href="#skill"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="text-3xl menu-link hover:tracking-tighter  font-extrabold tracking-widest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    >
                       SKILL
-                    </p>
+                    </a>
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="pl-[32px] pr-[32px] relative font-bold h-full  align-middle">
@@ -285,9 +374,13 @@ const Nav = () => {
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="grow relative">
-                    <p className="text-3xl menu-link font-bold tracking-widest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      PROJECTS
-                    </p>
+                    <a
+                      href="#project"
+                      onClick={() => setMenuOpen(!menuOpen)}
+                      className="text-3xl hover:tracking-tighter menu-link font-extrabold tracking-widest absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                    >
+                      PROJECT
+                    </a>
                   </div>
                   <div className="w-0.5 h-0 menu-line-vertical  bg-black relative"></div>
                   <div className="pl-[32px] pr-[32px] relative font-bold h-full  align-middle">
