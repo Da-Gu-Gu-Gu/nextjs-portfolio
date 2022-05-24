@@ -3,9 +3,6 @@ import Nav from "./Nav";
 import Lottie from "lottie-react";
 import * as animationData from "./profile.json";
 import gsap from "gsap";
-import { CSSRulePlugin } from "gsap/dist/CSSRulePlugin";
-
-gsap.registerPlugin(CSSRulePlugin);
 
 const landAnime = (image) => {
   gsap.to(".line-vertical", {
@@ -43,11 +40,13 @@ const landAnime = (image) => {
     duration: 0.3,
     delay: 0.9,
   });
-  gsap.to(image, {
+  gsap.to(".profile-reveal", {
     width: "0%",
+    // transformOrigin: "left right",
     ease: "power2.easeInOut",
     duration: 0.8,
     delay: 1.2,
+    stagger: -1,
   });
 
   gsap.fromTo(
@@ -80,21 +79,20 @@ const landAnime = (image) => {
 };
 
 const Landing = () => {
-  const imageReveal = CSSRulePlugin.getRule(".profile-container::after");
-
   useEffect(() => {
-    landAnime(imageReveal);
+    landAnime();
   }, []);
 
+  //need to fix
   return (
     <div id="landing" className="overflow-hidden  bg-awar">
       <Nav />
-      {/* h-52  */}
       <div className="text-3xl  w-screen h-screen flex flex-col   justify-center">
-        <div className="sm:w-96 w-80 rounded-3xl self-center profile-container place-content-center bg-white overflow-hidden flex justify-center ">
+        <div className="sm:w-96 w-80 rounded-3xl relative self-center content-center profile-container place-content-center bg-white overflow-hidden justify-center">
+          <div className="h-full bg-amel profile-reveal z-[1] absolute top-0 left-0 w-full"></div>
           <Lottie
             animationData={animationData}
-            className="w-80 h-52 profile "
+            className="w-full h-52 profile  absolute   z-0 "
             autoplay={true}
             loop={true}
           />
