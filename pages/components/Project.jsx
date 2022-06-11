@@ -16,7 +16,6 @@ const demoHandler = (demo, reveal, image) => {
       stagger: 1,
       duration: 1,
       scrollTrigger: {
-        scrub: true,
         trigger: demo,
         end: "center center+=200",
         toggleActions: "play none none reverse",
@@ -180,7 +179,7 @@ const Project = () => {
           </div>
           <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
             <a
-              href="https://mesg.vercel.app/"
+              href="https://guguchat.herokuapp.com/"
               className="bg-kayan demo4 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer"
             >
               DEMO

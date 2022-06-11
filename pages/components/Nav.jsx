@@ -19,6 +19,7 @@ const open = () => {
         translateX: "5px",
         translateY: "5px",
       },
+      duration: 0.02,
     }
   )
     .fromTo(
@@ -28,6 +29,7 @@ const open = () => {
       },
       {
         opacity: 0,
+        duration: 0.02,
       }
     )
     .fromTo(
@@ -41,10 +43,12 @@ const open = () => {
           translateX: "4px",
           translateY: "-9px",
         },
+        duration: 0.02,
       }
     )
     .to(".menu-wrap", {
       display: "block",
+      duration: 0.02,
     })
     .fromTo(
       ".menu-link-wrap",
@@ -53,6 +57,7 @@ const open = () => {
       },
       {
         height: "100%",
+        duration: 0.02,
       }
     )
 
@@ -160,6 +165,7 @@ const close = () => {
       },
       {
         height: 0,
+        // duration: 0.02,
       }
     )
 
@@ -193,13 +199,13 @@ const close = () => {
         },
       },
       {
-        duration: 0.2,
         alpha: 0,
         css: {
           rotate: "0deg",
           translateX: "0px",
           translateY: "0px",
         },
+        duration: 0.2,
       }
     )
     .fromTo(
@@ -221,7 +227,7 @@ const close = () => {
           translateX: "4px",
           translateY: "-9px",
         },
-        duration: 0.2,
+        duration: 0.02,
         alpha: 0,
       },
       {
@@ -230,6 +236,7 @@ const close = () => {
           translateX: "0px",
           translateY: "0px",
         },
+        duration: 0.2,
       }
     );
 };
