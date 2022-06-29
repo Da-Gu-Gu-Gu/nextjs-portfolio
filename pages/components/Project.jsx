@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -82,6 +83,7 @@ const Project = () => {
     demoHandler(".demo2", ".crush-reveal", ".crush");
     demoHandler(".demo3", ".attendance-reveal", ".attendance");
     demoHandler(".demo4", ".chat-reveal", ".chat");
+    demoHandler(".demo5", ".quizz-reveal", ".quizz");
   }, []);
 
   return (
@@ -113,12 +115,11 @@ const Project = () => {
             <p className="font-bold text-amel">Just try a taste of Three.js</p>
           </div>
           <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
-            <a
-              href="https://portal3d.herokuapp.com/"
-              className="bg-kayan demo1 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer"
-            >
-              DEMO
-            </a>
+            <Link href="https://portal3d.herokuapp.com/">
+              <a className="bg-kayan demo1 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
+                DEMO
+              </a>
+            </Link>
           </div>
         </div>
         <div className="border-2 border-black">
@@ -136,12 +137,11 @@ const Project = () => {
             </p>
           </div>
           <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
-            <a
-              href="https://crushhook.herokuapp.com/"
-              className="bg-kayan demo2 overflow-hidden demo font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer"
-            >
-              DEMO
-            </a>
+            <Link href="https://crushhook.herokuapp.com/">
+              <a className="bg-kayan demo2 overflow-hidden demo font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
+                DEMO
+              </a>
+            </Link>
           </div>
         </div>
         <div className="border-2 border-black">
@@ -157,12 +157,11 @@ const Project = () => {
             <p className="font-bold text-amel">Smart Attendance with Php</p>
           </div>
           <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
-            <a
-              href="http://attendance-smart.herokuapp.com/"
-              className="bg-kayan demo3 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer"
-            >
-              DEMO
-            </a>
+            <Link href="http://attendance-smart.herokuapp.com/">
+              <a className="bg-kayan demo3 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
+                DEMO
+              </a>
+            </Link>
           </div>
         </div>
         <div className="border-2 border-black">
@@ -178,12 +177,32 @@ const Project = () => {
             <p className="font-bold text-amel">Chat App</p>
           </div>
           <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
-            <a
-              href="https://guguchat.herokuapp.com/"
-              className="bg-kayan demo4 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer"
-            >
-              DEMO
-            </a>
+            <Link href="https://guguchat.herokuapp.com/">
+              <a className="bg-kayan demo4 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
+                DEMO
+              </a>
+            </Link>
+          </div>
+        </div>
+
+        <div className="border-2 border-black">
+          <div className="h-[200px]  overflow-hidden bg-amel relative">
+            <div className="h-[200px] bg-ani quizz-reveal z-[1] absolute top-0 left-0 w-full"></div>
+            <img
+              src="/quizz.png"
+              alt="quizz"
+              className="h-[150px]  quizz  absolute top-1/2 w-fit border-2 border-amel left-1/2 z-0 -translate-x-1/2 -translate-y-1/2"
+            />
+          </div>
+          <div className="bg-awar h-[65px] p-2">
+            <p className="font-bold text-amel">Quizz</p>
+          </div>
+          <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
+            <Link href="https://quizz-rose.vercel.app/">
+              <a className="bg-kayan demo5 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
+                DEMO
+              </a>
+            </Link>
           </div>
         </div>
       </div>
