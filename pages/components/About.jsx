@@ -138,7 +138,7 @@ const About = () => {
           ref={aboutRef}
           className="my-5  w-auto text-justify break-all  text-[18px] md:text-2xl lg:text-3xl"
         >
-          I'm very <span className="p-1 bg-ani">handsome developer</span>, from
+          I'm very <span className="p-1 bg-ani">!handsome</span> developer, from
           Yangon and studied at University of Computer Studies Yangon. I'm the
           boy fall in love with{" "}
           <span className="bg-awar text-amel p-1">Javascript</span>. Have been
