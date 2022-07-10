@@ -84,6 +84,7 @@ const Project = () => {
     demoHandler(".demo3", ".attendance-reveal", ".attendance");
     demoHandler(".demo4", ".chat-reveal", ".chat");
     demoHandler(".demo5", ".quizz-reveal", ".quizz");
+    demoHandler(".demo6", ".rps-reveal", ".rps");
   }, []);
 
   return (
@@ -200,6 +201,27 @@ const Project = () => {
           <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
             <Link href="https://quizz-rose.vercel.app/">
               <a className="bg-kayan demo5 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
+                DEMO
+              </a>
+            </Link>
+          </div>
+        </div>
+
+        <div className="border-2 border-black">
+          <div className="h-[200px]  overflow-hidden bg-amel relative">
+            <div className="h-[200px] bg-ani rps-reveal z-[1] absolute top-0 left-0 w-full"></div>
+            <img
+              src="/rock-paper-scissor.png"
+              alt="rps"
+              className="h-[150px]  rps  absolute top-1/2 w-fit border-2 border-amel left-1/2 z-0 -translate-x-1/2 -translate-y-1/2"
+            />
+          </div>
+          <div className="bg-awar h-[65px] p-2">
+            <p className="font-bold text-amel">Rock-Paper-Scissor Game</p>
+          </div>
+          <div className="project-link p-2 bg-awar border-2 border-amel border-x-0 border-b-0">
+            <Link href="https://rock-paper-scissor-murex.vercel.app/">
+              <a className="bg-kayan demo6 font-bold text-center text-white block p-[5px] rounded-sm cursor-pointer">
                 DEMO
               </a>
             </Link>
